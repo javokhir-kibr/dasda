@@ -1,0 +1,22 @@
+# Netlify Deployment Configuration for Project Aurora
+# NOTE: Netlify is a Jamstack / Static host. 
+# For full Python FastAPI backend execution, Render or Railway is recommended.
+
+[build]
+  publish = "static"
+  command = "echo 'Building Aurora Web UI...'"
+
+# If you host the FastAPI Python backend on Render, Railway, or VPS,
+# uncomment and update the redirect below to route all /api calls seamlessly:
+# [[redirects]]
+#   from = "/api/*"
+#   to = "https://your-backend-api.onrender.com/api/:splat"
+#   status = 200
+#   force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"

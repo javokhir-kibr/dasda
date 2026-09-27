@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>AURORA — Autonomous Agritech Vision Engine</title>
+  <link rel="icon" type="image/jpeg" href="/images/logo.jpg" />
+  <link rel="stylesheet" href="/styles.css?v=4.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- LEFT SIDEBAR -->
+    <aside class="left-sidebar glass-panel">
+      <!-- SIDEBAR BRAND -->
+      <div class="sidebar-brand">
+        <div class="brand-logo-wrap">
+          <img class="brand-logo-img" src="/images/logo.jpg" alt="Aurora Logo" />
+        </div>
+        <div class="brand-text">
+          <div class="brand-title-row">
+            <h1>Aurora Vision</h1>
+            <span class="version-tag">Universal</span>
+          </div>
+          <p class="subtitle" data-i18n="subtitle">Aholi tomorqasi, mevali daraxtlar, sabzavot va ekinlar uchun AI tabib</p>
+        </div>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <!-- NAVIGATION SECTION -->
+      <div class="sidebar-section-header">
+        <span class="sidebar-section-label" data-i18n="navSections">BO'LIMLAR</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-tab active" data-tab="tab-scanner">
+          <span class="nav-icon">
+            <svg class="nav-svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0-14 0"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/>
+            </svg>
+          </span>
+          <div class="nav-info">
+            <span class="nav-text" data-i18n="tabScanner">Diagnostika</span>
+            <span class="nav-sub" data-i18n="tabScannerSub">Barg tahlili</span>
+          </div>
+        </button>
+        <button class="nav-tab" data-tab="tab-agronomist">
+          <span class="nav-icon">
+            <img class="nav-tab-avatar" src="/images/agronomist_avatar.jpg" alt="Dala Agronomi" />
+          </span>
+          <div class="nav-info">
+            <span class="nav-text" data-i18n="tabAgronomist">Dala Agronomi</span>
+            <span class="nav-sub" data-i18n="tabAgronomistSub">Agro-maslahat chat</span>
+          </div>
+        </button>
+        <button class="nav-tab" data-tab="tab-catalog">
+          <span class="nav-icon">
+            <svg class="nav-svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            </svg>
+          </span>
+          <div class="nav-info">
+            <span class="nav-text" data-i18n="tabCatalog">Kasalliklar Katalogi</span>
+            <span class="nav-sub" data-i18n="tabCatalogSub">Ekin kasalliklari bazasi</span>
+          </div>
+        </button>
+        <button class="nav-tab" data-tab="tab-monitoring">
+          <span class="nav-icon">
+            <svg class="nav-svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/>
+            </svg>
+          </span>
+          <div class="nav-info">
+            <span class="nav-text" data-i18n="tabMonitoring">Fitoxarita</span>
+            <span class="nav-sub" data-i18n="tabMonitoringSub">14 viloyat monitoringi</span>
+          </div>
+        </button>
+        <button class="nav-tab" data-tab="tab-history">
+          <span class="nav-icon">
+            <svg class="nav-svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/>
+            </svg>
+          </span>
+          <div class="nav-info">
+            <span class="nav-text" data-i18n="tabHistory">Tarix &amp; Hisobot</span>
+            <span class="nav-sub" data-i18n="tabHistorySub">Tahlillar arxivi</span>
+          </div>
+        </button>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+
+      <!-- SIDEBAR CONTROLS FOOTER -->
+      <div class="sidebar-footer">
+        <button id="themeToggle" class="icon-btn sidebar-ctrl-btn" title="Mavzuni o'zgartirish (Dark / Light)">
+          <span id="themeIcon">
+            <svg class="ctrl-icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </span>
+          <span class="btn-label" data-i18n="themeBtn">Mavzu</span>
+        </button>
+        <button id="langToggle" class="lang-btn sidebar-ctrl-btn" title="Tilni o'zgartirish / Switch language">
+          <span class="flag-badge">UZ</span> <span class="lang-name">O'zbekcha</span>
+        </button>
+        <button id="apiKeyToggleBtn" class="sidebar-ctrl-btn" style="width: 100%; margin-top: 8px; font-size: 11px; padding: 6px 10px; display: flex; align-items: center; justify-content: center; gap: 6px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: var(--text-primary); border-radius: 8px; cursor: pointer;" title="Google Gemini API kalitini kiritish">
+          <span id="apiKeyDot" style="width: 8px; height: 8px; border-radius: 50%; background: #f59e0b; display: inline-block;"></span>
+          <span id="apiKeyStatusText">AI Kaliti (Sozlash)</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- RIGHT MAIN CONTENT WORKSTATION -->
+    <div class="main-content-area">
+
+    <!-- ====================================================================
+         TAB 1: AI DIAGNOSTIKA & SKANER (PRIMARY PAGE)
+         ==================================================================== -->
+    <main id="tab-scanner" class="tab-pane active">
+      <!-- CONTROL PANEL: CROP SELECTION -->
+      <section class="selection-card glass-panel">
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label for="cropSelect" data-i18n="cropLabel">
+              <span class="label-icon">
+                <svg class="label-icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 21 3c-1.5 4-2 5.5-3.1 11.2A7 7 0 0 1 11 20z"/><path d="M11 20v-9"/>
+                </svg>
+              </span>
+              Ekin turi (Target Crop):
+            </label>
+            <div class="custom-select-wrap">
+              <select id="cropSelect" class="styled-select">
+                <option value="AUTO" data-i18n="cropAuto">Avtomatik aniqlash (Har qanday o'simlik, daraxt, gul yoki sabzavot)</option>
+                <option value="TOMATO" data-i18n="cropTomato">Pomidor &amp; Sabzavotlar (Tomorqa ekinlari)</option>
+                <option value="CUCUMBER" data-i18n="cropCucumber">Bodring &amp; Poliz ekinlari (Qovun, Tarvuz)</option>
+                <option value="FRUIT_TREE" data-i18n="cropFruitTree">Mevali daraxtlar (Olma, Shaftoli, O'rik, Gilos, Anor)</option>
+                <option value="POTATO" data-i18n="cropPotato">Kartoshka, Baqlajon &amp; Qalampir</option>
+                <option value="HOUSEPLANT" data-i18n="cropHouseplant">Xona gullari &amp; Manzarali o'simliklar</option>
+                <option value="GRAPE" data-i18n="cropGrape">Uzum / Tokzor (Vitis vinifera)</option>
+                <option value="COTTON" data-i18n="cropCotton">Paxta / G'oza (Dala ekini)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUICK FIELD CASES (INSTANT DEMO SAMPLES) -->
+      <section class="samples-card glass-panel">
+        <div class="section-heading">
+          <div class="heading-with-icon">
+            <span class="pulse-icon">
+              <svg class="pulse-icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </span>
+            <h2 data-i18n="samplesHeading">Dala namunalarini tezkor tekshirish (Live Benchmarks):</h2>
+          </div>
+          <span class="badge-hint" data-i18n="samplesHint">Bitta bosishda 80ms tahlil</span>
+        </div>
+        <div class="samples-grid" id="samplesGrid">
+          <!-- Injected via JavaScript -->
+        </div>
+      </section>
+
+      <!-- SCANNER & CAPTURE SECTION -->
+      <section class="upload-section">
+        <div class="dropzone glass-panel" id="dropZone">
+          <input type="file" id="fileInput" accept="image/*" class="file-hidden" />
+          
+          <div class="dropzone-content" id="dropContent">
+            <div class="upload-icon-circle">
+              <div class="radar-scan"></div>
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                <circle cx="12" cy="13" r="4"></circle>
+              </svg>
+            </div>
+            <h3 data-i18n="dropzonePrompt">O'simlik, meva, gul yoki barg fotosuratini yuklang</h3>
+            <p class="dropzone-sub" data-i18n="dropzoneSub">Tomorqa, mevali daraxt, sabzavot, gul yoki ekin fotosuratini to'g'ridan-to'g'ri oling</p>
+            <button type="button" class="btn-primary" id="selectFileBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+              <span data-i18n="btnCapture">Rasm yuklash / Suratga olish</span>
+            </button>
+          </div>
+
+          <div class="preview-wrapper hidden" id="previewWrapper">
+            <div class="hud-scanner-overlay" id="scannerOverlay">
+              <div class="laser-sweep" id="laserSweep"></div>
+            </div>
+            <img id="previewImage" alt="Leaf Specimen" />
+            <button type="button" class="btn-reset" id="resetBtn" title="Boshqa rasm tanlash">✕</button>
+            
+            <!-- Quality indicators overlay -->
+            <div class="quality-badges" id="qualityBadges">
+              <span class="badge-tag" id="blurIndicator">Aniqlik: Tekshirilmoqda...</span>
+              <span class="badge-tag" id="glareIndicator">Yorug'lik: Normal</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Advanced Options Bar -->
+        <div class="options-bar glass-panel">
+          <label class="toggle-control" title="CLAHE filtri qattiq quyosh nuri va chuqur soyalarni normallashtiradi">
+            <input type="checkbox" id="claheToggle" checked />
+            <span class="toggle-slider"></span>
+            <span class="toggle-label" data-i18n="claheLabel">Quyosh nuri va soyaning ta'sirini kamaytirish (CLAHE Filter)</span>
+          </label>
+          <button type="button" class="btn-link" id="compareBtn" style="display: none;" title="Asl va yaxshilangan tasvirni solishtirish">
+            <span class="icon-spark">✦</span> <span data-i18n="btnCompare">Filtr taqqoslash</span>
+          </button>
+        </div>
+        <div class="clahe-status-hint">
+          <span class="calm-dot"></span>
+          <span data-i18n="claheActiveNotice">Filtr faol: Dala fotosurati quyosh nuri va soyaning ta'siridan avtomatik tozalanadi.</span>
+        </div>
+
+        <!-- DIAGNOSE BUTTON -->
+        <button type="button" class="btn-diagnose" id="diagnoseBtn" disabled>
+          <span class="spinner hidden" id="diagnoseSpinner"></span>
+          <span id="diagnoseBtnText" data-i18n="btnDiagnose">Tahlil qilish (Analyze Pathogen)</span>
+          <span class="btn-arrow">→</span>
+        </button>
+      </section>
+
+      <!-- DIAGNOSTIC RESULTS HUD -->
+      <section class="results-card glass-panel hidden" id="resultsCard">
+        <!-- HEADER & THREAT LEVEL -->
+        <div class="results-header">
+          <div class="threat-box">
+            <div class="threat-label-sm" data-i18n="threatLevel">BIOLOGIK XAVF DARAJASI (THREAT LEVEL):</div>
+            <div class="threat-pill threat-HIGH" id="threatPill">HIGH</div>
+          </div>
+          <div class="confidence-box">
+            <div class="conf-label" data-i18n="confidence">AI ISHONCH KO'RSATKICHI:</div>
+            <div class="conf-meter-wrapper">
+              <div class="conf-bar-bg">
+                <div class="conf-bar-fill" id="confBarFill" style="width: 0%;"></div>
+              </div>
+              <span class="conf-value mono" id="confValue">0%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRIMARY DIAGNOSIS TITLE -->
+        <div class="diagnosis-headline">
+          <div class="headline-meta">
+            <span class="pathogen-chip mono" id="pathogenType">BACTERIAL</span>
+            <span class="host-chip mono" id="hostCropChip">COTTON LEAF</span>
+          </div>
+          <h2 class="disease-uz" id="diseaseNameUz">Bakterial burchakli dog'lanish (Gommoz)</h2>
+          <p class="disease-scientific mono" id="diseaseScientific">Xanthomonas citri pv. malvacearum</p>
+          <p class="disease-en" id="diseaseNameEn">Bacterial Blight (Angular Leaf Spot)</p>
+        </div>
+
+        <!-- FARMER VOICE ADVISORY -->
+        <div class="farmer-advisory-box">
+          <div class="advisory-avatar">
+            <img class="advisory-avatar-img" src="/images/agronomist_avatar.jpg" alt="Agronomist" />
+          </div>
+          <div class="advisory-content">
+            <div class="advisory-header-row">
+              <h4 data-i18n="advisoryTitle">Dehqon uchun agronom xulosasi:</h4>
+              <button type="button" class="btn-voice-read" id="voiceReadBtn" title="Ovozli eshitish" data-i18n="voiceReadBtn">
+                <svg class="btn-icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                </svg>
+                <span id="voiceReadBtnText">Tinglash</span>
+              </button>
+            </div>
+            <p id="advisoryUzText">G'oza barglarida gommoz (bakterioz) alomatlari aniqlandi. Zudlik bilan mis kuporosi sepib, sug'orishni tartibga soling.</p>
+          </div>
+        </div>
+
+        <!-- ABIOTIC VS BIOTIC REASONING -->
+        <div class="analysis-box">
+          <div class="box-header">
+            <span class="box-icon">
+              <svg class="box-icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+            </span>
+            <h4 data-i18n="abioticHeading">Sho'rlanish va Issiq Urishidan Farqlash (Diagnostic Reasoning):</h4>
+          </div>
+          <p id="abioticAssessment"></p>
+        </div>
+
+        <!-- VISUAL BIOMARKERS -->
+        <div class="biomarkers-box">
+          <div class="box-header">
+            <span class="box-icon">
+              <svg class="box-icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/>
+                <line x1="12" y1="6" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="18"/>
+              </svg>
+            </span>
+            <h4 data-i18n="biomarkersHeading">Aniqlangan patologik belgilar (Visual Biomarkers):</h4>
+          </div>
+          <div class="tags-cloud" id="biomarkersList">
+            <!-- Biomarker pills injected via JS -->
+          </div>
+        </div>
+
+        <!-- 3 IMMEDIATE LOW-COST INTERVENTIONS -->
+        <div class="interventions-wrapper">
+          <div class="interventions-header">
+            <div class="interventions-title-row">
+              <span class="lightning-badge">
+                <svg class="lightning-badge-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+              </span>
+              <h3 data-i18n="interventionsHeading">Zudlik Bilan Amalga Oshiriladigan 3 Ta Qulay Chora:</h3>
+            </div>
+            <p class="interventions-sub" data-i18n="interventionsSub">Arzon, oson va mahalliy bozorlarda (O'zagrokimyohimoya) topiladigan choralar</p>
+          </div>
+          <div class="steps-grid" id="interventionsList">
+            <!-- 3 Steps injected via JS -->
+          </div>
+        </div>
+
+        <!-- DIFFERENTIAL DIAGNOSIS -->
+        <div class="differential-box">
+          <span class="diff-icon">
+            <svg class="diff-icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h18"/>
+            </svg>
+          </span>
+          <div>
+            <strong data-i18n="differentialLabel">Ehtimoliy o'xshash kasallik (Differential Diagnosis):</strong>
+            <span id="differentialText"></span>
+          </div>
+        </div>
+
+        <!-- ASK AGRONOMIST BUTTON SHORTCUT -->
+        <div class="ask-shortcut-banner">
+          <div class="ask-shortcut-profile">
+            <img class="ask-shortcut-avatar" src="/images/agronomist_avatar.jpg" alt="Dala Agronomi" />
+            <div class="ask-shortcut-text">
+              <h4 data-i18n="askBannerTitle">Ushbu kasallik bo'yicha qo'shimcha savolingiz bormi?</h4>
+              <p data-i18n="askBannerSub">Dala agronomi bilan bevosita onlayn suhbatlashing</p>
+            </div>
+          </div>
+          <button type="button" class="btn-secondary" id="askAgronomistShortcut">
+            <svg class="btn-icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+            <span data-i18n="askBannerBtn">Agronomga savol berish</span>
+          </button>
+        </div>
+
+        <!-- METRICS & LATENCY FOOTER -->
+        <div class="results-footer mono">
+          <div class="metric-item">
+            <span class="metric-dot"></span>
+            <span id="latencyBadge">
+              <svg class="metric-icon-svg" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span id="latencyVal">82ms</span>
+            </span>
+          </div>
+          <div class="metric-item">
+            <span id="modeBadge">TIZIM: FAOL</span>
+          </div>
+          <div class="metric-item">
+            <span id="qualityStatusBadge">INTEGRITY: OPTIMAL</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ====================================================================
+         TAB 2: AI DALA AGRONOMI (INTERACTIVE CHAT CONSULTATION)
+         ==================================================================== -->
+    <main id="tab-agronomist" class="tab-pane hidden">
+      <div class="chat-container glass-panel">
+        <div class="chat-header">
+          <div class="chat-profile-card">
+            <div class="chat-avatar-wrap">
+              <div class="chat-avatar">
+                <img class="chat-avatar-img" src="/images/agronomist_avatar.jpg" alt="Aurora Dala Agronomi" />
+              </div>
+              <div class="chat-online-dot" title="Onlayn"></div>
+            </div>
+            <div class="chat-title-box">
+              <div class="agronomist-name-row">
+                <h3 data-i18n="chatTitle">Aurora Dala Agronomi</h3>
+                <span class="agronomist-status-pill">● ONLAYN</span>
+                <span class="agronomist-badge">Katta Fitosanitar Ekspert</span>
+              </div>
+              <p class="agronomist-desc" data-i18n="chatSubtitle">Tomorqa, bog'dorchilik, xona gullari va dehqonchilik bo'yicha 24/7 onlayn konsultatsiya</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Question Prompts -->
+        <div class="quick-prompts-row" id="quickPromptsRow">
+          <button type="button" class="quick-prompt-btn" data-q-uz="Pomidor barglari qorayib quryapti, fitoftoraga qarshi nima qilish kerak?" data-q-en="Tomato leaves are turning black and drying, how to treat blight?" data-lbl-uz="Pomidor qorayishi" data-lbl-en="Tomato Blight">
+            <svg class="quick-icon-svg" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+            <span class="quick-lbl">Pomidor qorayishi</span>
+          </button>
+          <button type="button" class="quick-prompt-btn" data-q-uz="Bodringda oq unsimon dog'lar tushdi, xalqona davosi bormi?" data-q-en="Cucumber has white powdery spots, is there a home remedy?" data-lbl-uz="Bodring oq mog'or" data-lbl-en="Cucumber Mildew">
+            <svg class="quick-icon-svg" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="3"/><circle cx="8" cy="13" r="3"/><circle cx="16" cy="13" r="3"/><circle cx="12" cy="19" r="3"/></svg>
+            <span class="quick-lbl">Bodring oq mog'or</span>
+          </button>
+          <button type="button" class="quick-prompt-btn" data-q-uz="Olma daraxtida parsha (kalmaraz) va qurtga qarshi qachon dori sepiladi?" data-q-en="When to spray for apple scab and pests in the home orchard?" data-lbl-uz="Olma parshasi va qurt" data-lbl-en="Apple Scab">
+            <svg class="quick-icon-svg" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+            <span class="quick-lbl">Olma parshasi va qurt</span>
+          </button>
+          <button type="button" class="quick-prompt-btn" data-q-uz="Xona gulim barglari sarg'ayib to'kilyapti, sababi nima?" data-q-en="Why are my houseplant leaves yellowing and dropping?" data-lbl-uz="Xona gullari" data-lbl-en="Houseplants">
+            <svg class="quick-icon-svg" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 21 3c-1.5 4-2 5.5-3.1 11.2A7 7 0 0 1 11 20z"/></svg>
+            <span class="quick-lbl">Xona gullari</span>
+          </button>
+          <button type="button" class="quick-prompt-btn" data-q-uz="Mis kuporosi yoki osh sodasi eritmasini qanday tayyorlash kerak?" data-q-en="How to prepare copper sulfate or baking soda garden spray?" data-lbl-uz="Mis kuporosi tayyorlash" data-lbl-en="Prepare spray">
+            <svg class="quick-icon-svg" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.69 19.3A2 2 0 0 0 6.4 22h11.2a2 2 0 0 0 1.71-2.7L14 9.31V2"/></svg>
+            <span class="quick-lbl">Mis kuporosi tayyorlash</span>
+          </button>
+        </div>
+
+        <!-- Chat Conversation Messages Window -->
+        <div class="chat-messages" id="chatMessages">
+          <div class="chat-msg msg-assistant">
+            <img class="msg-avatar-img" src="/images/agronomist_avatar.jpg" alt="Aurora O'simliklar Tabibi" />
+            <div class="msg-bubble" id="chatWelcomeBubble">
+              <p><strong>Assalomu alaykum, aziz yurtdoshim! Xush kelibsiz!</strong></p>
+              <p>Men Aurora — o'simliklar shifokori va bosh agronomiman. Hovlingizdagi mevali daraxtlar (olma, shaftoli, uzum), tomorqadagi sabzavotlar (pomidor, bodring), xona gullari yoki ekinlaringizdagi har qanday kasallik va parvarish bo'yicha yordam berishga tayyorman. Savolingizni bemalol yozing!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Input Bar -->
+        <form id="chatForm" class="chat-input-bar">
+          <input type="text" id="chatInput" placeholder="Agronomga savol bering (masalan: 10L suvga qancha Tiovit Jet solinadi?)..." autocomplete="off" />
+          <button type="submit" class="btn-chat-send" id="chatSendBtn" title="Yuborish">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <!-- ====================================================================
+         TAB 3: ENSIKLOPEDIK KATALOG (DISEASE & PEST ENCYCLOPEDIA)
+         ==================================================================== -->
+    <main id="tab-catalog" class="tab-pane hidden">
+      <div class="catalog-container glass-panel">
+        <div class="catalog-header">
+          <div>
+            <h3 data-i18n="catalogTitle">O'simliklar va Bog' Kasalliklari Ensiklopediyasi</h3>
+            <p data-i18n="catalogSubtitle">Tomorqa sabzavotlari, mevali daraxtlar, tokzor va dala ekinlari spravochnigi</p>
+          </div>
+          <div class="catalog-filter">
+            <button class="filter-btn active" data-filter="ALL" data-i18n="filterAll">Barchasi</button>
+            <button class="filter-btn" data-filter="Pomidor" data-i18n="filterVeg">Sabzavotlar (Pomidor, Bodring)</button>
+            <button class="filter-btn" data-filter="Mevali" data-i18n="filterFruit">Mevali daraxtlar (Olma, Shaftoli)</button>
+            <button class="filter-btn" data-filter="Uzum" data-i18n="filterGrape">Uzum</button>
+            <button class="filter-btn" data-filter="Paxta" data-i18n="filterCotton">Paxta</button>
+          </div>
+        </div>
+
+        <div class="catalog-grid" id="catalogGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </main>
+
+    <!-- ====================================================================
+         TAB 4: FITOMONITORING XARITASI (14 VILOYAT XAVF DARAJALARI)
+         ==================================================================== -->
+    <main id="tab-monitoring" class="tab-pane hidden">
+      <div class="monitoring-container glass-panel">
+        <div class="monitoring-header">
+          <div>
+            <h3 data-i18n="monitoringTitle">O'zbekiston Fitomonitoring Xaritasi (14 Hudud)</h3>
+            <p data-i18n="monitoringSubtitle">Real vaqt rejimida viloyatlar bo'yicha kasallik tarqalish xavfi va ob-havo ogohlantirishlari</p>
+          </div>
+          <span class="pulse-live-badge" data-i18n="monitoringBadge">● JONLI MONITORING</span>
+        </div>
+
+        <div class="monitoring-grid" id="monitoringGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </main>
+
+    <!-- ====================================================================
+         TAB 5: TAHLILLAR TARIXI VA FERMER DALOLATNOMASI (REPORTS)
+         ==================================================================== -->
+    <main id="tab-history" class="tab-pane hidden">
+      <div class="history-container glass-panel">
+        <div class="history-header">
+          <div>
+            <h3 data-i18n="historyTitle">Fermer Tahlillar Tarixi &amp; Dalolatnoma</h3>
+            <p data-i18n="historySubtitle">Sessiyada o'tkazilgan tahlillar va chop etiladigan fitosanitar xulosa</p>
+          </div>
+          <button type="button" class="btn-primary" id="printReportBtn">
+            <svg class="btn-icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            <span id="printReportBtnText" data-i18n="btnPrintReport">Dalolatnomani Chop Etish (PDF)</span>
+          </button>
+        </div>
+
+        <div class="history-list" id="historyList">
+          <div class="empty-history" id="emptyHistoryMsg">
+            <span class="empty-icon">
+              <svg class="empty-icon-svg" viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                <line x1="9" y1="12" x2="15" y2="12"/>
+                <line x1="9" y1="16" x2="13" y2="16"/>
+              </svg>
+            </span>
+            <p data-i18n="emptyHistory">Hozircha hech qanday tahlil o'tkazilmadi. Diagnostika bo'limida barg suratini tahlil qiling.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+      <div class="footer-links">
+        <span class="footer-badge">AI-NATIVE ARCHITECTURE</span>
+        <span class="footer-bullet">•</span>
+        <span>CENTRAL ASIA ARID ZONE AGRI-TECH</span>
+        <span class="footer-bullet">•</span>
+        <span>MULTISPECTRAL VISION CORE</span>
+      </div>
+      <p class="copyright">Project Aurora &copy; 2026 — O'zbekiston sun'iy intellektual agrar monitoring tizimi</p>
+      <p class="footer-note" data-i18n="footerNote">O'zbekiston oziq-ovqat va paxtachilik xavfsizligini ta'minlash uchun ishlab chiqilgan</p>
+    </footer>
+    </div>
+  </div>
+
+  <!-- CLAHE Comparison Modal -->
+  <div class="modal hidden" id="compareModal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modalTitleHeading">
+    <div class="modal-card glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="icon-spark">✦</span>
+          <h3 id="modalTitleHeading" data-i18n="modalTitle">Quyosh nuri va soya filtrini taqqoslash (CLAHE vs Raw)</h3>
+        </div>
+        <button class="modal-close" id="modalCloseBtn" aria-label="Oynani yopish" title="Oynani yopish (Esc)">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="compare-col">
+          <h4 data-i18n="rawLabel">Asl fotosurat (Dala nurlari va qattiq soya):</h4>
+          <div class="img-frame">
+            <img id="rawPreviewModal" src="" alt="Asl dala bargi" />
+          </div>
+        </div>
+        <div class="compare-col">
+          <h4 data-i18n="claheLabelModal">CLAHE filtri (Yorug'lik normallashgan):</h4>
+          <div class="img-frame enhanced">
+            <img id="clahePreviewModal" src="" alt="Yaxshilangan barg (Enhanced Leaf)" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-modal-close" id="modalCloseBtnBottom" data-i18n="modalClose">
+          ✕ Oynani yopish
+        </button>
+        <button type="button" class="btn-modal-proceed" id="modalProceedBtn" data-i18n="modalProceed">
+          Tahlilni boshlash (Diagnostika) →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gemini API Key Modal -->
+  <div class="modal hidden" id="apiKeyModal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="apiKeyModalTitle">
+    <div class="modal-card glass-panel" style="max-width: 520px;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="icon-spark">🔑</span>
+          <h3 id="apiKeyModalTitle">Google Gemini API Kalitini Sozlash</h3>
+        </div>
+        <button class="modal-close" id="apiKeyModalCloseBtn" aria-label="Oynani yopish">✕</button>
+      </div>
+      <div class="modal-body" style="padding: 20px; display: block;">
+        <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 14px; line-height: 1.5;">
+          Har qanday fotosuratni <strong>haqiqiy jonli Gemini AI</strong> bilan to'g'ridan-to'g'ri tahlil qilish uchun Google AI Studio API kalitingizni kiriting:
+        </p>
+        <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px; padding: 12px; margin-bottom: 16px; font-size: 12px;">
+          💡 <strong>1 daqiqada bepul kalit olish:</strong><br>
+          <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color: #10b981; text-decoration: underline; font-weight: 600;">aistudio.google.com/app/apikey</a> saytiga kiring, Google akkauntingiz bilan kirib <em>"Create API key"</em> tugmasini bosing (mutlaqo bepul).
+        </div>
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label for="apiKeyInput" style="font-size: 12px; font-weight: 600; display: block; margin-bottom: 6px;">Gemini API Kaliti (AIzaSy...):</label>
+          <input type="password" id="apiKeyInput" placeholder="AIzaSy..." class="styled-select" style="width: 100%; box-sizing: border-box; padding: 10px; font-family: monospace;" />
+        </div>
+        <div id="apiKeySaveStatus" style="font-size: 12px; display: none; margin-bottom: 10px;"></div>
+      </div>
+      <div class="modal-footer" style="justify-content: flex-end; gap: 10px;">
+        <button type="button" class="btn-modal-close" id="apiKeyCancelBtn">Bekor qilish</button>
+        <button type="button" class="btn-modal-proceed" id="apiKeySaveBtn" style="padding: 8px 18px;">Saqlash &amp; Faollashtirish ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/app.js?v=4.0"></script>
+</body>
+</html>
